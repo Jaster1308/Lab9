@@ -44,6 +44,18 @@ MongoClient.conncet(url, function(err, db) {
     });
 
 // error handler
+// development error handler
+// will print stacktrace
+    if (app.get('env') === 'development') {
+      app.use(function (err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+          message: err.message,
+            error: err
+        });
+      });
+    }
+
     app.use(function (err, req, res, next) {
         // set locals, only providing error in development
         res.locals.message = err.message;
@@ -55,4 +67,5 @@ MongoClient.conncet(url, function(err, db) {
     });
 
 });
+
 module.exports = app;
