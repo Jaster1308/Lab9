@@ -1,0 +1,18 @@
+<h1>{{flower.name}}</h1>
+
+{{#if flower.image}}
+    <img src="/images/{{flower.image}}">
+{{else}}
+    <P>Sorry, no image for {{flower.name}}</P>
+{{/if}}
+
+<p><span id="name">{{flower.name}}</span> is
+    <span id="editableColor">{{flower.color}}</span>
+    <span id="instructions"> (click color to edit)</span></p>
+
+<P>Visit this flower's page at Wikipedia at the following link:
+    <a href="{{flower.wiki}}">{{flower.wiki}}</a></P>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="/javascripts/updatecolor.js"></script>

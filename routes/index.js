@@ -4,7 +4,7 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
-    reg.db.collection('flowers').find().toArray(function (err, docs) {
+    req.db.collection('flowers').find().toArray(function (err, docs) {
         if (err) {
             return next(err)
         }

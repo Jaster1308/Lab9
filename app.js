@@ -8,15 +8,13 @@ var hbs = require('express-handlebars');
 var assert = require('assert');
 var MongoClient = require('mongodb').MongoClient;
 
-var routes = require('./routes/index');
+var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
 
-var mongo_pw = process.env.MONGO_PW;
-var url = 'mongodb://admin:'+ mongo_pw +
-'@localhost:27017/garden?authSource=admin';
-MongoClient.conncet(url, function(err, db) {
+var url = 'mongodb://localhost:27017/garden';
+MongoClient.connect(url, function(err, db) {
     assert.equal(null, err);
     console.log('connected to MongoDB');
 
@@ -38,7 +36,7 @@ MongoClient.conncet(url, function(err, db) {
       next();
     });
 
-    app.use('/', routes);
+    app.use('/', index);
     app.use('/users', users);
 
 // catch 404 and forward to error handler
